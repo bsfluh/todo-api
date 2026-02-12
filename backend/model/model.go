@@ -2,23 +2,28 @@ package model
 
 import "time"
 
+type Priority string
+
+const (
+	Paramount Priority = "Paramount" //Срочные и важные
+	High      Priority = "High"      //срочные и не важные
+	Middle    Priority = "Middle"    //несрочные и важные
+	Low       Priority = "Low"       //несрочные и не важные
+)
+
 type User struct {
-	ID       int    `json:"id"`
-	Name     string `json:"name"`
-	Password string `json:"-"`
-	Email    string `json:"email"`
+	ID        int       `json:"id"`
+	Name      string    `json:"name"`
+	Password  string    `json:"-"`
+	Email     string    `json:"email"`
+	CreatedAt time.Time `json:"createdAt"`
 }
 type Task struct {
-	ID         int       `json:"id"`
-	UserID     int       `json:"userID"`
-	Title      string    `json:"title"`
-	CreadTime  time.Time `json:"creadTime"`
-	UpdateTime time.Time `json:"updateTime"`
-	Deadline   time.Time `json:"dedline"`
-}
-type TypesTask struct {
-	ParamountImportance Task `json:"paramountImportance"`
-	HighImportance      Task `json:"highImportance"`
-	MiddlImportance     Task `json:"middlImportance"`
-	LowImportance       Task `json:"lowImportance"`
+	ID          int       `json:"id"`
+	UserID      int       `json:"userID"`
+	Title       string    `json:"title"`
+	Priority    Priority  `json:"priority"`
+	CreatedTime time.Time `json:"creadTime"`
+	UpdateTime  time.Time `json:"updateTime"`
+	Deadline    time.Time `json:"deadline"`
 }
