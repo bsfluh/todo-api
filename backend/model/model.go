@@ -12,18 +12,17 @@ const (
 )
 
 type User struct {
-	ID        int       `json:"id"`
-	Name      string    `json:"name"`
-	Password  string    `json:"-"`
-	Email     string    `json:"email"`
-	CreatedAt time.Time `json:"createdAt"`
+	ID           int64     `json:"id"`
+	Name         string    `json:"name"`
+	PasswordHash string    `json:"-"`
+	Email        string    `json:"email"`
+	CreatedAt    time.Time `json:"createdAt"`
 }
 type Task struct {
-	ID          int       `json:"id"`
-	UserID      int       `json:"userID"`
+	ID          int64     `json:"id"`
+	UserID      int64     `json:"userID"`
 	Title       string    `json:"title"`
 	Priority    Priority  `json:"priority"`
 	CreatedTime time.Time `json:"creadTime"`
 	UpdateTime  time.Time `json:"updateTime"`
-	Deadline    time.Time `json:"deadline"`
 }

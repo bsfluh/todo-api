@@ -9,7 +9,7 @@ type UserRepository interface {
 type TaskRepository interface {
 	Create(task *model.Task) error
 	GetByID(id int) (*model.Task, error)
-	GetAllByUserID(userID int) ([]model.Task, error)
+	GetAllTasksByUserID(userID int) ([]model.Task, error)
 	Update(task *model.Task) error
 	Delete(id int, userID int) error
 }
