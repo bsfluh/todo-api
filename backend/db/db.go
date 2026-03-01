@@ -8,7 +8,7 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
-func NewPostgresDB(cfg *config.Config) (*pgxpool.Pool, error) {
+func NewPostgresPool(cfg *config.Config) (*pgxpool.Pool, error) {
 	connStr := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
 		cfg.DBHost,
 		cfg.DBPort,

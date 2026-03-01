@@ -1,0 +1,11 @@
+-- +goose Up
+CREATE TABLE tasks(
+id TEXT NOT NULL PRIMARY KEY,
+user_id BIGINT NOT NULL UNIQUE,
+title TEXT NOT NULL,
+priority TEXT NOT NULL,
+created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+);
+-- +goose Down
+DROP TABLE tasks;

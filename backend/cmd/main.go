@@ -18,10 +18,11 @@ func main() {
 	if err != nil {
 		log.Fatalf("error config: %v", err)
 	}
-	db, err := db.NewPostgresDB(cfg)
+	pool, err := db.NewPostgresPool(cfg)
 	if err != nil {
 		log.Fatalf("error db: %v", err)
 	}
+	defer pool.Close()
 	//дбшкка
 
 	r := gin.Default()
