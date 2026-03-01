@@ -1,2 +1,13 @@
-./backend/.env
+# Окружения
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Временные папки
 tmp/
+tmp/*
+
+# Go
+vendor/
