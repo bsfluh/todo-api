@@ -18,6 +18,6 @@ func NewDBUserRepository(pool *pgxpool.Pool) *DBUserRepository {
 func (m *DBUserRepository) Create(user *model.User) error {
 
 }
-func (m *DBUserRepository) GetByEmail(email string) (model.User, error) {
+func (m *DBUserRepository) GetByEmail(email string) (*model.User, error) {
 
 }

@@ -23,6 +23,7 @@ type Task struct {
 	UserID      int64     `json:"userID"`
 	Title       string    `json:"title"`
 	Priority    Priority  `json:"priority"`
+	Deadline    time.Time `json:"deadline"`
 	CreatedTime time.Time `json:"creadTime"`
 	UpdateTime  time.Time `json:"updateTime"`
 }

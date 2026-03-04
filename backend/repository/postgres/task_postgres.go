@@ -15,7 +15,7 @@ func NewPoolTaskRepository(pool *pgxpool.Pool) *PoolTaskRepository {
 		pool: pool,
 	}
 }
-func (n *PoolTaskRepository) Create(task *model.Task) {
+func (n *PoolTaskRepository) Create(task *model.Task) error {
 
 }
 func (n *PoolTaskRepository) GetByID(id int) (model.Task, error) {
