@@ -4,7 +4,7 @@ import "todo-Api/model"
 
 type UserRepository interface {
 	Create(user *model.User) error
-	GetByEmail(email string) (*model.User, error)
+	// GetByEmail(email string) (*model.User, error)
 }
 type TaskRepository interface {
 	Create(task *model.Task) error

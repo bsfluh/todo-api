@@ -14,8 +14,8 @@ const (
 type User struct {
 	ID           int64     `json:"id"`
 	Name         string    `json:"name"`
-	PasswordHash string    `json:"-"`
 	Email        string    `json:"email"`
+	PasswordHash string    `json:"-"`
 	CreatedAt    time.Time `json:"createdAt"`
 }
 type Task struct {
