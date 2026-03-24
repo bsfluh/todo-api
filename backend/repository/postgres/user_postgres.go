@@ -7,16 +7,16 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
-type DBUuserRepository struct {
+type PoolUserRepository struct {
 	pool *pgxpool.Pool
 }
 
-func NewDBUuserRepository(pool *pgxpool.Pool) *DBUuserRepository {
-	return &DBUuserRepository{
+func NewPoolUserRepository(pool *pgxpool.Pool) *PoolUserRepository {
+	return &PoolUserRepository{
 		pool: pool,
 	}
 }
-func (m *DBUuserRepository) Create(user *model.User) error {
+func (m *PoolUserRepository) Create(user *model.User) error {
 	query := `
 INSERT INTO users( name, email, password_hash, created_at)
 VALUES ($1, $2, $3, $4)
@@ -26,8 +26,7 @@ RETURNING id
 	return err
 }
 
-/*
-func (m *DBUuserRepository) GetByEmail(email string) (*model.User, error) {
+func (m *PoolUserRepository) GetByEmail(email string) (*model.User, error) {
 	query := `
 SELECT id, name, email, password_hash, created_at
 FROM users
@@ -40,4 +39,3 @@ WHERE email = $1
 	}
 	return user, nil
 }
-*/

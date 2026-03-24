@@ -32,27 +32,21 @@ func main() {
 		log.Fatalf("error db: %v", err)
 	}
 	defer pool.Close()
-	userRepo := postgres.NewDBUuserRepository(pool)
-	//taskRepo := postgres.NewPoolTaskRepository(pool)
-
+	// Repositories
+	userRepo := postgres.NewPoolUserRepository(pool)
+	taskRepo := postgres.NewPoolTaskRepository(pool)
+	// Services
 	authService := service.NewAuthService(userRepo)
-	//
+	taskService := service.NewTaskService(taskRepo)
+	// Handlers
+	taskHandler := api.NewTaskHandler(taskService)
 	authHandler := api.NewAuthHandler(authService)
+
 	r := gin.Default()
 
 	templates := template.Must(template.ParseFS(templatesFS, "templates/*.html"))
 	r.SetHTMLTemplate(templates)
+	api.SetupRouter(r, authHandler, taskHandler)
 
-	r.GET("/", func(c *gin.Context) {
-		c.HTML(200, "index.html", gin.H{})
-	})
-	r.GET("/login", func(c *gin.Context) {
-		c.HTML(200, "login.html", gin.H{})
-	})
-	r.POST("/login", func(c *gin.Context) {
-		email := c.PostForm("email")
-		password := c.PostForm("password")
-		c.String(200, "Получен логин: email=%s, password=%s", email, password)
-	})
 	r.Run(":8080")
 }

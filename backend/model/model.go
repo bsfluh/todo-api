@@ -24,6 +24,7 @@ type Task struct {
 	Title       string    `json:"title"`
 	Priority    Priority  `json:"priority"`
 	Deadline    time.Time `json:"deadline"`
-	CreatedTime time.Time `json:"creadTime"`
-	UpdateTime  time.Time `json:"updateTime"`
+	CreatedAt   time.Time `json:"createdAt"`
+	UpdateAt    time.Time `json:"updateAt"`
+	Description string    `json:"description"`
 }
